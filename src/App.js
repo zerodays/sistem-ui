@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Suspense } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { CssBaseline, withStyles } from '@material-ui/core';
+import { ErrorContext, parseApiError } from './util/errorHandler';
+import Login from './pages/Login';
+import Inventory from './pages/Inventory';
+import Home from './pages/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const styles = theme => ({
+  root: {
+    display: 'flex',
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(2),
+  },
+});
+
+class App extends Component {
+
+  handleApiError = (reason, history) => {
+    // Function passed in react context, it is retrieved from context using
+    // withErrorHandler higher order component. It should be called on axios
+    // error. On critical error (i.e. no permission) user is redirected to
+    // error page. If error is not critical just a dialog is shown.
+    const redirect = route => {
+      history.push(route);
+    };
+
+    parseApiError(reason, redirect);
+  };
+
+  appRouter = () => {
+    const {classes} = this.props;
+    return (
+      <div style={{flexGrow: 1}}>
+        <BrowserRouter className={classes.content}>
+          <Suspense fallback={<div>Loading</div>}>
+            <Switch>
+              <Route path={'/login'} component={Login}/>
+              <Route path={'/inventory'} component={Inventory}/>
+
+              <Route path={'/'} component={Home}/>
+            </Switch>
+          </Suspense>
+        </BrowserRouter>
+      </div>
+    );
+  };
+
+  render() {
+    const {classes} = this.props;
+    return (
+      <div className={classes.root}>
+        <CssBaseline/>
+        <ErrorContext.Provider value={this.handleApiError}>
+          {this.appRouter()}
+        </ErrorContext.Provider>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withStyles(styles)(App);
