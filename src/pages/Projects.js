@@ -18,12 +18,13 @@ import {
   ListItem,
   ListItemSecondaryAction,
   ListItemText,
-  TextField, Tooltip,
+  TextField,
+  Tooltip,
   Typography,
 } from '@material-ui/core';
 import { projectsServiceUrl } from '../util/constants';
 import api from '../util/api';
-import { AddOutlined, ArrowBack, Close, Delete, Edit, ExpandMore, Remove } from '@material-ui/icons';
+import { AddOutlined, ArrowBack, Close, Delete, Edit, ExpandMore } from '@material-ui/icons';
 import { withRouter } from 'react-router-dom';
 import ConfirmDialog from '../components/ConfirmDialog';
 import moment from 'moment';
@@ -75,7 +76,7 @@ class Projects extends React.Component {
       onSuccess: (r) => {
         this.setState(prevState => ({
           users: {
-            ...prevState.phases,
+            ...prevState.users,
             [projectId]: r.data,
           },
         }));
@@ -191,8 +192,6 @@ class Projects extends React.Component {
 
   render() {
     const {currentProject, projectToDelete, currentPhase, tasksDialogData} = this.state;
-
-    console.log(this.state.users);
 
     return <Container>
       <Box pt={4}>

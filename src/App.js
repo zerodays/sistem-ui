@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Inventory from './pages/Inventory';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
+import Meetings from './pages/Meetings';
 
 const styles = theme => ({
   root: {
@@ -41,6 +42,7 @@ class App extends Component {
               <Route path={'/login'} component={Login}/>
               <Route path={'/inventory'} component={Inventory}/>
               <Route path={'/projects'} component={Projects}/>
+              <Route path={'/meetings'} component={Meetings}/>
 
               <Route path={'/'} component={Home}/>
             </Switch>

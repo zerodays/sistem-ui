@@ -32,6 +32,11 @@ function Home(props) {
           <Button variant='contained' color='primary' style={{width: 200}}
                   onClick={() => props.history.push('/projects')}>Projekti</Button>
         </Grid>
+
+        <Grid item>
+          <Button variant='contained' color='primary' style={{width: 200}}
+                  onClick={() => props.history.push('/meetings')}>Sestanki</Button>
+        </Grid>
       </Grid>
     </Box>
   </Container>;
