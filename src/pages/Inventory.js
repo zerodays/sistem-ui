@@ -21,7 +21,7 @@ import {
 import { inventoryServiceUrl } from '../util/constants';
 import api from '../util/api';
 import moment from 'moment';
-import { Add, ArrowBack, Edit } from '@material-ui/icons';
+import { ArrowBack, Edit } from '@material-ui/icons';
 import CurrencyNumberFormat from '../components/CurrencyNumberFormat';
 import { withRouter } from 'react-router-dom';
 
@@ -97,8 +97,7 @@ class Inventory extends React.Component {
                     'Price': 100,
                     'DatePurchased': moment().toISOString(),
                   },
-                })}>
-                  <Add/> Dodaj
+                })}>Dodaj predmet
                 </Button>
               </Grid>
             </Grid>

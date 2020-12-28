@@ -2,6 +2,7 @@
 // I haven't implemented refresh token or anything similar...
 // {
 //  'token': 'TOKEN',
+//  'email': 'EMAIL'
 // }
 
 function getUserData() {

@@ -20,12 +20,17 @@ function Home(props) {
 
         <Grid item>
           <Button variant='contained' color='primary' style={{width: 200}}
-                  onClick={() => props.history.push('/login')}>Login</Button>
+                  onClick={() => props.history.push('/login')}>Prijava</Button>
         </Grid>
 
         <Grid item>
           <Button variant='contained' color='primary' style={{width: 200}}
-                  onClick={() => props.history.push('/inventory')}>Inventory</Button>
+                  onClick={() => props.history.push('/inventory')}>Inventar</Button>
+        </Grid>
+
+        <Grid item>
+          <Button variant='contained' color='primary' style={{width: 200}}
+                  onClick={() => props.history.push('/projects')}>Projekti</Button>
         </Grid>
       </Grid>
     </Box>

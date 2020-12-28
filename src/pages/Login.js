@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, Card, Container, Grid, Link, TextField, Typography } from '@material-ui/core';
 import api from '../util/api';
 import { usersServiceUrl } from '../util/constants';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { saveUserData } from '../util/user';
 
 class Login extends React.Component {
@@ -36,15 +36,16 @@ class Login extends React.Component {
     api.post(`${usersServiceUrl}/authorize`, {
       email: email,
       password: password,
-      type: 'password'
+      type: 'password',
     }, {
       onSuccess: (r) => {
         saveUserData({
-          token: r.data.access_token
+          token: r.data.access_token,
+          email: email
         });
-        this.props.history.push('/')
+        this.props.history.push('/');
       },
-      onError: (e) => this.props.history.push('/login')
+      onError: (e) => this.props.history.push('/login'),
     });
   };
 
@@ -101,7 +102,7 @@ class Login extends React.Component {
                     <Grid item key='submit' xs={12}>
                       <Button
                         disabled={!this.isValid()}
-                        variant='outlined'
+                        variant='contained'
                         type='submit'
                         color='primary'
                         style={{'width': '100%'}}>
