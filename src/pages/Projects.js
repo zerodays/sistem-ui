@@ -311,6 +311,8 @@ class Projects extends React.Component {
                               secondary={phase.description}
                             />
                             <ListItemSecondaryAction>
+                              <Button variant='contained' color='primary' style={{width: 200}}
+                                      onClick={() => this.props.history.push(`/payments/${phase.id}`)}>Plačila</Button>
                               <Button onClick={() => this.setState({currentPhase: phase})}>
                                 <Edit/>
                               </Button>

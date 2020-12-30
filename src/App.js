@@ -7,6 +7,7 @@ import Inventory from './pages/Inventory';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Meetings from './pages/Meetings';
+import Payments from './pages/Payments';
 
 const styles = theme => ({
   root: {
@@ -43,6 +44,7 @@ class App extends Component {
               <Route path={'/inventory'} component={Inventory}/>
               <Route path={'/projects'} component={Projects}/>
               <Route path={'/meetings'} component={Meetings}/>
+              <Route path={'/payments'} component={Payments}/>
 
               <Route path={'/'} component={Home}/>
             </Switch>

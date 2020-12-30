@@ -1,5 +1,5 @@
 import React from 'react';
-import { getUserData } from '../util/user';
+import { getUserData, saveUserData } from '../util/user';
 import { Redirect, withRouter } from 'react-router-dom';
 import { Box, Button, Container, Grid } from '@material-ui/core';
 
@@ -16,26 +16,34 @@ function Home(props) {
           <h1>Sistem</h1>
         </Grid>
 
-        <Grid item xs={12}></Grid>
+        <Grid item xs={12} />
 
         <Grid item>
-          <Button variant='contained' color='primary' style={{width: 200}}
-                  onClick={() => props.history.push('/login')}>Prijava</Button>
+          {!getUserData().token ?
+            <Button variant='contained' color='primary' style={{width: 200}}
+                    onClick={() => props.history.push('/login')}>Prijava</Button> :
+            <Button variant='contained' color='primary' style={{width: 200}}
+                    onClick={() => {
+                      saveUserData(null);
+                      props.history.push('/login');
+                    }}>Odjava</Button>}
         </Grid>
 
         <Grid item>
           <Button variant='contained' color='primary' style={{width: 200}}
                   onClick={() => props.history.push('/inventory')}>Inventar</Button>
         </Grid>
-
         <Grid item>
           <Button variant='contained' color='primary' style={{width: 200}}
                   onClick={() => props.history.push('/projects')}>Projekti</Button>
         </Grid>
-
         <Grid item>
           <Button variant='contained' color='primary' style={{width: 200}}
                   onClick={() => props.history.push('/meetings')}>Sestanki</Button>
+        </Grid>
+        <Grid item>
+          <Button variant='contained' color='primary' style={{width: 200}}
+                  onClick={() => props.history.push('/payments')}>Izplačila</Button>
         </Grid>
       </Grid>
     </Box>

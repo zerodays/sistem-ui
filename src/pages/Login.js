@@ -41,7 +41,7 @@ class Login extends React.Component {
       onSuccess: (r) => {
         saveUserData({
           token: r.data.access_token,
-          email: email
+          email: email,
         });
         this.props.history.push('/');
       },
